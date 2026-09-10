@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="zh-Hant">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="品格小星球：陪孩子用短片與小行動認識品格的力量。" />
+  <title>品格小星球｜陪孩子練習成為更好的自己</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+
+<body>
+  <header class="hero" id="top">
+    <nav class="site-nav" aria-label="主要導覽"><a class="brand" href="#top" aria-label="品格小星球首頁"><span
+          class="brand-mark">★</span>品格小星球</a>
+      <div class="nav-links"><a href="#lesson">本週影片</a><a href="#more">探索主題</a><a href="#account">我的學習</a><a href="profile.html" id="profile-nav-link" hidden>我的資料</a></div>
+    </nav>
+    <div class="hero-copy">
+      <div class="eyebrow">CHARACTER EDUCATION</div>
+      <h1>每一天，練習成為更好的自己</h1>
+      <p>用一支短片、一個小行動，陪孩子認識品格的力量。</p>
+    </div>
+  </header>
+  <main class="page-layout">
+    <section class="content-card" id="lesson" aria-labelledby="lesson-title">
+      <div class="section-label"><span>公開影片</span>本週的品格任務</div>
+      <h2 id="lesson-title">從日常小事，練習美好的品格</h2>
+      <p class="section-intro">以下影片所有人都可以觀看；登入後，系統才會開始記錄你的學習歷程。</p><!-- app.js 依 VIDEO_CATALOG 自動建立三支影片卡片。 -->
+      <div class="video-grid" id="video-grid" aria-live="polite"></div>
+      <p class="video-note" id="more">目前為示範影片，之後只要修改 <code>assets/video-catalog.js</code> 即可替換或新增內容。</p>
+    </section>
+    <aside class="account-card" id="account" aria-labelledby="account-title">
+      <div class="account-top">
+        <div class="section-label section-label--light"><span>我的學習</span></div>
+        <h2 id="account-title">登入，收藏你的成長</h2>
+        <p id="account-text">登入後才能查看觀看時數、完成影片與學習進度。</p>
+      </div><!-- 未登入時只顯示引導，不顯示任何個人化數據。 -->
+      <div class="account-body" id="guest-panel">
+        <div class="welcome">
+          <div class="avatar" aria-hidden="true">🌟</div>
+          <div><strong>小小探索者</strong><small>開始建立自己的學習旅程</small></div>
+        </div>
+        <p class="guest-message">建立示範帳戶後，會從 0 分鐘、0 支完成影片與 0% 進度開始記錄。</p>
+        <div class="account-actions"><button class="outline-button" id="register-button">建立帳戶</button><button
+            class="primary-button" id="login-button">登入</button></div>
+      </div><!-- dashboard 預設以 hidden 隱藏，僅登入後由 app.js 顯示。 -->
+      <div class="account-body" id="learning-dashboard" hidden>
+        <div class="welcome">
+          <div class="avatar" aria-hidden="true">🌟</div>
+          <div><strong id="profile-name"></strong><small>你的學習紀錄已儲存於此瀏覽器</small></div>
+        </div>
+        <div class="progress-wrap">
+          <div class="progress-caption"><span>課程完成進度</span><span id="progress-percent">0%</span></div>
+          <div class="track" aria-label="課程完成進度">
+            <div id="progress-bar"></div>
+          </div>
+        </div>
+        <div class="stats">
+          <div class="stat"><strong id="minutes-value">0</strong><span>觀看分鐘</span></div>
+          <div class="stat"><strong id="videos-value">0</strong><span>完成影片</span></div>
+        </div>
+        <div class="account-actions"><a class="outline-button account-action-link" href="profile.html">我的資料</a><button class="primary-button" id="continue-button">繼續學習</button></div>
+        <button class="logout-link" id="logout-button">登出</button>
+      </div>
+    </aside>
+  </main>
+  <!-- 目前是瀏覽器示範帳戶：不要求或保存密碼。 -->
+  <dialog class="auth-dialog" id="auth-dialog" aria-labelledby="dialog-title">
+    <form class="dialog-inner" id="auth-form">
+      <h2 id="dialog-title">開始你的學習旅程</h2>
+      <p id="dialog-text">這是前端示範帳戶，資料只會儲存在目前瀏覽器。</p><label for="user-name">暱稱</label><input id="user-name" required
+        maxlength="20" placeholder="例如：樂樂" autofocus /><label for="email">Email</label><input id="email" type="email"
+        required placeholder="name@example.com" />
+      <div class="dialog-actions"><button type="button" class="close-button" id="cancel-button">取消</button><button
+          type="submit" class="primary-button">開始記錄</button></div>
+    </form>
+  </dialog>
+  <script src="assets/video-catalog.js" defer></script>
+  <script src="assets/app.js" defer></script>
+</body>
+
+</html>

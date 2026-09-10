@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="品格小星球的個人資料與家庭成員管理。" />
+  <title>我的資料｜品格小星球</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body class="profile-page">
+  <header class="subpage-hero">
+    <nav class="site-nav">
+      <a class="brand" href="index.html"><span class="brand-mark">★</span>品格小星球</a>
+      <a class="back-link" href="index.html">← 回到學習首頁</a>
+    </nav>
+    <div class="subpage-copy"><p class="eyebrow">MY PROFILE</p><h1>我的資料</h1><p>管理帳戶資料與家庭成員，陪伴每一段學習時光。</p></div>
+  </header>
+
+  <main class="profile-layout">
+    <!-- 未登入時，不顯示或收集任何個人資料。 -->
+    <section class="profile-card profile-guest-card" id="profile-guest">
+      <span class="guest-icon" aria-hidden="true">🔐</span><h2>登入後，查看你的學習小檔案</h2><p>帳戶資料、家庭成員與學習摘要都會在這裡整理好。</p><a class="primary-button profile-button" href="index.html#account">前往登入</a>
+    </section>
+
+    <div id="profile-content" hidden>
+      <!-- Account overview contains account-level progress, never family-member progress. -->
+      <section class="profile-overview" aria-labelledby="overview-title">
+        <div class="overview-intro"><div class="profile-star" aria-hidden="true">★</div><div><p class="overview-kicker">你的學習小檔案</p><h2 id="overview-title" data-owner-name>小小探索者</h2><p id="overview-email">name@example.com</p></div><button class="outline-button logout-button" id="logout-button">登出</button></div>
+        <div class="summary-grid"><div class="summary-item"><span class="summary-icon">👪</span><strong id="member-count">0</strong><small>家庭成員</small></div><div class="summary-item summary-item--blue"><span class="summary-icon">▶</span><strong id="videos-value">0</strong><small>完成影片</small></div><div class="summary-item summary-item--mint"><span class="summary-icon">⏱</span><strong id="minutes-value">0</strong><small>觀看分鐘</small></div></div>
+      </section>
+
+      <section class="profile-card account-details-card">
+        <div class="card-title-row"><div><p class="section-label"><span>帳戶資料</span></p><h2>基本資料</h2></div><p class="card-hint">可隨時更新你的暱稱</p></div>
+        <form id="profile-form" class="profile-form profile-form--two-columns">
+          <div><label for="profile-name">暱稱</label><input id="profile-name" required maxlength="20" /></div>
+          <div><label for="profile-email">Email</label><input id="profile-email" type="email" readonly /></div>
+          <p class="field-note">Email 將由 Firebase Authentication 管理；目前為瀏覽器示範資料。</p>
+          <div class="profile-save-row"><button class="primary-button save-button" type="submit">儲存變更</button><p class="form-notice" id="profile-notice" aria-live="polite"></p></div>
+        </form>
+      </section>
+
+      <section class="profile-card family-card">
+        <div class="card-title-row family-title-row"><div><p class="section-label"><span>家庭資料</span></p><h2>家庭成員</h2><p class="family-intro">目前僅記錄名稱與關係，不會建立子帳戶或個別學習進度。</p></div><button class="add-member-button" id="show-member-form" type="button">＋ 新增家庭成員</button></div>
+        <ul class="member-list" id="member-list"></ul>
+        <!-- 使用者點擊新增按鈕後才顯示，避免初始頁面資訊過多。 -->
+        <form id="member-form" class="member-form member-form--collapsible" hidden>
+          <div><label for="member-name">成員名稱</label><input id="member-name" required maxlength="20" placeholder="例如：小安" /></div>
+          <div><label for="member-relation">與帳戶持有人的關係</label><input id="member-relation" required maxlength="20" placeholder="例如：孩子、配偶" /></div>
+          <div class="member-form-actions"><button class="outline-button" id="cancel-member-form" type="button">取消</button><button class="primary-button save-button" type="submit">儲存成員</button></div>
+        </form>
+      </section>
+    </div>
+  </main>
+  <script src="assets/profile.js" defer></script>
+</body>
+</html>
