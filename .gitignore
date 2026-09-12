@@ -1,0 +1,5 @@
+# Local Firebase configuration for this deployment.
+assets/firebase-config.js
+
+# Environment files may contain credentials or service tokens.
+.env*
